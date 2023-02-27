@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  ngOnInit():void{
+    this.addMarker()
+  }
   changeB(bl:any){
     this.primary = bl;
   }
+  markers:any=[];
   title = 'ZenduForm';
   menuItems = [{ name: "Forms", active: "inactive" , svg:"assets/Vector (6).svg"},
   { name: "Customers", active: "inactive" , svg:"assets/Vector (5).svg" },
@@ -60,5 +64,19 @@ export class AppComponent {
   }
   move(event: google.maps.MapMouseEvent) {
       if (event.latLng != null) this.display = event.latLng.toJSON();
+  }
+  addMarker() {
+    this.markers.push({
+      position: {
+        lat: this.center.lat + ((Math.random() - 0.5) * 2) / 10,
+        lng: this.center.lng + ((Math.random() - 0.5) * 2) / 10,
+      },
+      label: {
+        color: 'red',
+        text: 'Marker label ' + (this.markers.length + 1),
+      },
+      title: 'Marker title ' + (this.markers.length + 1),
+      options: { animation: google.maps.Animation.BOUNCE },
+    });
   }
 }
