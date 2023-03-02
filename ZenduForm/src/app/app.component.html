@@ -36,7 +36,7 @@
     <div class="col-3 m-1">
       <img class="absoluteImg" src="assets/search.svg" alt="">
       <input type="text" class="form-control form-input" placeholder="Search">
-    </div> 
+    </div>
     <div class="col-2 m-1">
       <select class="form-select" aria-label=" Default Select Form">
         <option value="1">Select Form</option>
@@ -67,12 +67,16 @@
   <div class="col-4 p-1">
     <div class="card m-1" *ngFor="let data of Data">
       <div class="card-body p-2">
-        <p class="card-title"><span><b>Work Flow: </b> </span><b>{{data.WorkFlow}}</b> <span class="ms-5 text-end" [ngClass]="data.Status==='Uncomplete'?'btn btn-outline-danger':data.Status==='Low Risk'?'btn btn-outline-success':'btn btn-outline-secondary'">
-          <img [ngClass]="data.Status==='Uncomplete'?'btn-outline-danger':data.Status==='Low Risk'?'btn-outline-success':'btn-outline-secondary'" src="assets/circle.svg" alt=""> {{data.Status}}</span></p>
+        <p class="card-title"><span><b>Work Flow: </b> </span><b>{{data.WorkFlow}}</b> <span class="ms-5 text-end"
+            [ngClass]="data.Status==='Uncomplete'?'btn btn-outline-danger':data.Status==='Low Risk'?'btn btn-outline-success':'btn btn-outline-secondary'">
+            <img
+              [ngClass]="data.Status==='Uncomplete'?'btn-outline-danger':data.Status==='Low Risk'?'btn-outline-success':'btn-outline-secondary'"
+              src="assets/circle.svg" alt=""> {{data.Status}}</span></p>
       </div>
       <p class="card-text"><span class="text-muted">From: </span>{{data.From}}</p>
       <p class="card-text"><span class="text-muted">To: </span>{{data.To}}</p>
-      <p class="card-text"><span class="text-muted">Due Date: </span> <span class="text-danger">{{data.DueDate}}</span></p>
+      <p class="card-text"><span class="text-muted">Due Date: </span> <span class="text-danger">{{data.DueDate}}</span>
+      </p>
     </div>
   </div>
   <div class="col-8 p-3 flex">
@@ -80,13 +84,8 @@
       (mapMousemove)="move($event)">
     </google-map> -->
     <google-map>
-      <map-marker
-        *ngFor="let marker of markers"
-        [position]="marker.position"
-        [label]="marker.label"
-        [title]="marker.title"
-        [options]="marker.options"
-      >
+      <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+        [title]="marker.title" [options]="marker.options">
       </map-marker>
     </google-map>
   </div>
